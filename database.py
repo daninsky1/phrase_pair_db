@@ -181,7 +181,7 @@ class TransDatabase(dict):
         """Set self[key] to value.
 
         Caution: note that __setitem__ can overwrite data. So if you want add
-        a new key with a overwrite garanty use the add method.
+        a new key with a overwrite check, you can use the add method.
         """
         if not isinstance(trans_list_name, str):
             raise TypeError("invalid type")
