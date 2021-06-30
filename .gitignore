@@ -1,0 +1,3 @@
+# ignore venv and pycharm files
+venv_linux/
+.idea/
