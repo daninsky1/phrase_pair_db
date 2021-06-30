@@ -1,3 +1,28 @@
+"""
+MIT License
+
+Copyright (c) 2020 Daniel Silva dos Santos
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
+
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font
 import collections.abc
@@ -20,7 +45,7 @@ class TransPair(collections.UserList):
         super(TransPair, self).__init__([item0, item1])
 
     def __getattribute__(self, attr):
-        """Prevent super class methods break TransPair guides."""
+        """Prevent super class methods to break TransPair guides."""
         private_super = [
             "append", "extend", "insert",
             "pop", "remove", "clear", "sort"
@@ -80,7 +105,6 @@ class TransList(collections.UserList):
         super(TransList, self).insert(i, tp_key)
 
     def extend(self, other):
-
         # TODO: test this method
         for trans_pair in other:
             self.append(trans_pair)
@@ -230,7 +254,7 @@ class TransDatabase(dict):
             kwargs = cls.__json_load(file)
         else:
             raise ValueError("invalid extension file. xlsx or json")
-        first_lang = kwargs[cls.INFO_TITLE][cls.LANGS][0]  # confusing AS
+        first_lang = kwargs[cls.INFO_TITLE][cls.LANGS][0]  # confusing AF
         second_lang = kwargs[cls.INFO_TITLE][cls.LANGS][1]
         return cls(first_lang, second_lang, **kwargs)
 
@@ -306,7 +330,7 @@ class TransDatabase(dict):
         if not isinstance(sl, str):
             sl = str(sl)
         if fl == sl:
-            raise ValueError("languages has same attribute value.")
+            raise ValueError("languages has the same attribute value.")
         return [fl, sl]
 
 
